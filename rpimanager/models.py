@@ -95,8 +95,9 @@ class Raspbery(models.Model):
     )
 
 
-@receiver(post_save, sender=Pole)
+@receiver(post_save, sender=Raspbery)
 def attach_cone(sender, instance, created, **kwargs):
     if not created:
-        if instance.has_raspberry:
-            Cone.objects.create(pole=sender)
+        if instance.pole:
+            if instance.pole.has_raspberry():
+                Cone.objects.create(pole=sender)
