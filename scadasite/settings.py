@@ -25,7 +25,7 @@ SECRET_KEY = '8rg-bb10(0ujyo183ecbx4r45bu#9%t5wqnzkji2ej=v7l@_40'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = ['rpimanager'
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rpimanager'
 ]
 
 MIDDLEWARE = [
