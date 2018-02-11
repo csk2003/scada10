@@ -33,7 +33,7 @@ class Pole(models.Model):
 
     def has_raspberry(self):
         try:
-            rasp = pole.raspbery
+            rasp = self.raspbery
         except Raspbery.DoesNotExist:
             return False
         else:
