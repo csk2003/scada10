@@ -34,7 +34,7 @@ class Pole(models.Model):
     def has_raspberry(self):
         try:
             rasp = pole.raspbery
-        except Raspbery.ObjectDoesNotExist:
+        except RelatedObjectDoesNotExist:
             return False
         else:
             return True
