@@ -8,8 +8,8 @@ from django.dispatch import receiver
 class Pole(models.Model):
     is_enabled = models.BooleanField(default=False)
     has_err = models.BooleanField(default=False)
-    creation_date = models.DateField()
-    longongitude = models.DecimalField(max_digits=8, decimal_places=3)
+    creation_date = models.DateField(auto_now_add=True)
+    longitude = models.DecimalField(max_digits=8, decimal_places=3)
     latitude = models.DecimalField(max_digits=8, decimal_places=3)
 
     #pole failure is given by the absence of a sensor or the rpi
@@ -17,7 +17,7 @@ class Pole(models.Model):
         if not Raspbery_Health.state_suspended:
             self.is_enabled = False
             Alarm.objects.create(pole_id=self.id,verbiage='raspbery_suspended') 
-        elif  not Raspbery_Health.wind_sensor_chk:
+        elif not Raspbery_Health.wind_sensor_chk:
             self.is_enabled = False
             Alarm.objects.create(pole_id=self.id,verbiage='wind_sensor_fail')
         elif not Raspbery_Health.humidity_sensor_chk: 
@@ -98,4 +98,4 @@ class Raspbery(models.Model):
 @receiver(post_save, sender=Pole)
 def attach_cone(sender, **kwargs):
     if sender.has_raspberry:
-        Cone.objects.create(pole_id=sender.id)
+        Cone.objects.create(pole=sender)
