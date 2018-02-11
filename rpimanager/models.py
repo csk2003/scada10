@@ -38,9 +38,9 @@ class Cone(models.Model):
 	water_debit = models.PositiveIntegerField(default=0)
 	size_of_cone = models.PositiveIntegerField(default=0) 
 	pole = models.OneToOneField(
-        Pole,
-        on_delete=models.SET_NULL
-    )
+		Pole,
+		on_delete=models.SET_NULL
+	)
 
 #alarm class. if pole sensor missing or values out of boundry or if colision of cone
 
@@ -56,10 +56,10 @@ class Alarm(models.Model):
 			'humidity_sensor_fail': "Check humidity sensor",
 			'water_debit_fail': "Check water debit sensor",
 			'thermo_fail': "Thermometer failure"
-		 }
+		}
 
-		 failure_verbiage = ALARM_VERBATIM.get(self.verbiage, default='Alarm not found!')
-		 return failure_verbiage
+		failure_verbiage = ALARM_VERBATIM.get(self.verbiage, default='Alarm not found!')
+		return failure_verbiage
 
 #raspbery model
 
@@ -70,5 +70,3 @@ class Raspbery_Health(models.Model):
 	humidity_sensor_chk = models.BooleanField(initial=True)
 	water_debit_chk = models.BooleanField(initial=True)
 	thermometer_chk = models.BooleanField(initial=True)
-
-
