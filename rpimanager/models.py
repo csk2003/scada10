@@ -6,7 +6,6 @@ from django.dispatch import receiver
 #pole class sensor. Pleaced on the field to obtain all information for a speciffic area.
 
 class Pole(models.Model):
-    id_pole = models.IntegerField(unique=True)
     is_enabled = models.BooleanField(default=False)
     has_err = models.BooleanField(default=False)
     creation_date = models.DateField()
