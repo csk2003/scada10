@@ -5,8 +5,8 @@ from django.db import models
 
 class Pole(models.Model):
 	id_pole = models.IntegerField()
-	is_enabled = models.BooleanField(initial=False)
-	has_err = models.BooleanField(initial=False)
+	is_enabled = models.BooleanField(default=False)
+	has_err = models.BooleanField(default=False)
 	creation_date = models.DateField()
 	longongitude = models.DecimalField(max_digits=8, decimal_places=3)
 	latitude = models.DecimalField(max_digits=8, decimal_places=3)
@@ -65,8 +65,8 @@ class Alarm(models.Model):
 
 class Raspbery_Health(models.Model):
 	name = models.TextField(max_length=20)
-	state_suspended = models.BooleanField(initial=True)
-	wind_sensor_chk = models.BooleanField(initial=True)
-	humidity_sensor_chk = models.BooleanField(initial=True)
-	water_debit_chk = models.BooleanField(initial=True)
-	thermometer_chk = models.BooleanField(initial=True)
+	state_suspended = models.BooleanField(default=True)
+	wind_sensor_chk = models.BooleanField(default=True)
+	humidity_sensor_chk = models.BooleanField(default=True)
+	water_debit_chk = models.BooleanField(default=True)
+	thermometer_chk = models.BooleanField(default=True)
