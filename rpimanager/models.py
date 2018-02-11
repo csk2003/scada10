@@ -100,4 +100,4 @@ def attach_cone(sender, instance, created, **kwargs):
     if not created:
         if instance.pole:
             if instance.pole.has_raspberry():
-                Cone.objects.create(pole=sender)
+                Cone.objects.create(pole=instance.pole)
