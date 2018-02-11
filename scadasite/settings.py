@@ -37,8 +37,7 @@ INSTALLED_APPS = ['rpimanager'
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rpimanager'
-]
+    'django-extensions'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
