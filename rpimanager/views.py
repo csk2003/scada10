@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from scada10.rpimanager import models
+from rpimanager import models
 # Create your views here.
 
 def listallpoles(request):
