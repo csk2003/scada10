@@ -45,7 +45,8 @@ class Cone(models.Model):
     pole = models.OneToOneField(
         Pole,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True
     )
 
 #alarm class. if pole sensor missing or values out of boundry or if colision of cone
@@ -54,7 +55,8 @@ class Alarm(models.Model):
     pole = models.ForeignKey(
         Pole,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True
     )
     verbiage = models.TextField(blank=True)
 
@@ -84,7 +86,8 @@ class Raspbery(models.Model):
     pole = models.OneToOneField(
         Pole,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True
     )
 
 
