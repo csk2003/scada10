@@ -50,11 +50,12 @@ class Alarm(models.Model):
 
 	#raise alarm if pole is affected
 	def log_alarm(self):
-		ALARM_VERBATIM = {'raspbery_suspended': "General Failure Detected, RPI is suspended",
-		'wind_sensor_fail': "Check wind sensor", 
-		'humidity_sensor_fail': "Check humidity sensor"
-		'water_debit_fail': "Check water debit sensor"
-		'thermo_fail': "Thermometer failure"
+		ALARM_VERBATIM = {
+			'raspbery_suspended': "General Failure Detected, RPI is suspended",
+			'wind_sensor_fail': "Check wind sensor", 
+			'humidity_sensor_fail': "Check humidity sensor",
+			'water_debit_fail': "Check water debit sensor",
+			'thermo_fail': "Thermometer failure"
 		 }
 
 		 failure_verbiage = ALARM_VERBATIM.get(self.verbiage, default='Alarm not found!')
