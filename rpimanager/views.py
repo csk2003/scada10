@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from rpimanager import models
+from rpimanager.models import Pole
 # Create your views here.
 
 def listallpoles(request):
