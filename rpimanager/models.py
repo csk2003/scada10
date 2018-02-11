@@ -31,8 +31,13 @@ class Pole(models.Model):
             self.is_enabled = False
             Alarm.objects.create(pole_id=self.id,verbiage='thermo_fail')
 
-    # def has_raspberry(self):
-    #     return self.
+    def has_raspberry(self):
+        try:
+            rasp = pole.raspbery
+        except Raspberry.ObjectDoesNotExist:
+            return False
+        else:
+            return True
 
 #the pole cone of influence. Weather data
 
