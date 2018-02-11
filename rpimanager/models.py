@@ -39,7 +39,8 @@ class Cone(models.Model):
 	size_of_cone = models.PositiveIntegerField(default=0) 
 	pole = models.OneToOneField(
 		Pole,
-		on_delete=models.SET_NULL
+		on_delete=models.SET_NULL,
+        null=True
 	)
 
 #alarm class. if pole sensor missing or values out of boundry or if colision of cone
@@ -47,7 +48,8 @@ class Cone(models.Model):
 class Alarm(models.Model):
 	pole = models.ForeignKey(
         Pole,
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
+        null=True
     )
 	verbiage = models.TextField(blank=True)
 
