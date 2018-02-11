@@ -19,5 +19,5 @@ from rpimanager import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/^$', views.listallpoles)
+    path('^$', views.listallpoles)
 ]
