@@ -13,19 +13,19 @@ class Pole(models.Model):
 
 	#pole failure is given by the absence of a sensor or the rpi
 	def pole_failure(self):
-		if !Raspbery_Health.state_suspended:
+		if not Raspbery_Health.state_suspended:
 			is_enabled = False
 			alarm.log_alarm(raspbery_suspended) 
-		elif !Raspbery_Health.wind_sensor_chk:
+		elif  not Raspbery_Health.wind_sensor_chk:
 			is_enabled = False
 			alarm.log_alarm(wind_sensor_fail)
-		elif !Raspbery_Health.humidity_sensor_chk: 
+		elif not Raspbery_Health.humidity_sensor_chk: 
 			is_enabled = False
 			alarm.log_alarm(humidity_sensor_fail)
-		elif !Raspbery_Health.water_debit_chk:
+		elif not Raspbery_Health.water_debit_chk:
 			is_enabled = False
 			alarm.log_alarm(water_debit_fail)
-		elif !Raspbery_Health.thermometer_chk:
+		elif not Raspbery_Health.thermometer_chk:
 			is_enabled = False
 			alarm.log_alarm(thermo_fail)
 
