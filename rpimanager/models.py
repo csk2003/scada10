@@ -45,7 +45,10 @@ class Cone(models.Model):
 #alarm class. if pole sensor missing or values out of boundry or if colision of cone
 
 class Alarm(models.Model):
-	pole = models.ForeignKey(Pole)
+	pole = models.ForeignKey(
+        Pole,
+        on_delete=models.SET_NULL
+    )
 	verbiage = models.TextField(blank=True)
 
 	#raise alarm if pole is affected
