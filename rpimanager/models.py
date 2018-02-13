@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from math import sin, cos, sqrt, atan2, radians
+from geocopy.distance import distance as geocopy_distance
 
 
 #pole class sensor. Pleaced on the field to obtain all information for a speciffic area.
@@ -38,29 +38,6 @@ class Pole(models.Model):
             return False
         else:
             return True
-
-    def colision(self):
-    	r=6373000 #radius of earth in m
-    	#curret long and latitude
-    	c_log = radians(self.longitude)
-    	c_lat = radians(self.latitude)
-    	c_id = self.id
-    	for e in pole.objects.all():
-    		#each long and lat
-    		elongit = radians(e.longitude)
-    		elatit = radians(e.latitude)
-    		dlon = elongit-c_log
-    		dlat = elatit-c_lat
-    		a = sin(dlat/2)**2+cos(c_lat)*sin(dlon/2)**2
-    		c = 2*asin(sqrt(a))
-    		dist = c * r
-    		if e.id == c_id:
-    			pass
-    		else
-    			if dist <= 20:
-    				Alarm.objects.create(pole_id=c_id,verbiage='colision')
-
-
 
 
 class Cone(models.Model):
@@ -129,4 +106,19 @@ def attach_cone(sender, instance, created, **kwargs):
         if instance.pole:
             if instance.pole.has_raspberry():
                 Cone.objects.create(pole=instance.pole)
-                #if colision create alarm
+             	colision(instance.pole)
+
+
+def colision(pole):
+
+	logni = pole.longitude
+	lati = pole.latitude
+	c_pole = (longi, lati)
+	for p in pole.objects.all():
+		p_latit = p.latitude
+		p_longi = p.longitude
+		p_pole = (p_longi, p_latit)
+		dist = geocopy_distance(c_pole, p_pole)
+		dist_m = dist.meters
+		if dist_m <= 100:
+			Alarm.objects.create(pole_id=c_id,verbiage='colision')
